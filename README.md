@@ -13,7 +13,7 @@ Multihack for Half-Life: 2 (singleplayer)
 <p>No ViewPunch</p>
 <p>Wireframe</p>
 <p>Console Logs</p>
-</br>
+<br/>
 <h1>Setting up the solution</h1>
 <ul>
   <li>Download and install <a href="https://www.microsoft.com/en-us/download/details.aspx?id=6812">DirectX SDK</a></li>
