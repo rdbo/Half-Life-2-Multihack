@@ -2,9 +2,9 @@
 HL2Ware.net is updated fork of <a href="https://github.com/rdbo/Half-Life-2-Multihack">rdbo/Half-Life-2-Multihack</a>
 
 
-<h3>Menu screenshot (probably will change soon): </h3>
+<h3>Menu screenshot: </h3>
 
-![image](https://user-images.githubusercontent.com/65111609/204043806-1d03f2cf-4f2f-45d9-a50a-80d5af7cf345.png)
+![image](https://user-images.githubusercontent.com/65111609/204060232-d0ebb64c-3c96-44d7-9d2a-165fac0f3511.png)
 
 
 <h2>Functions</h2>
