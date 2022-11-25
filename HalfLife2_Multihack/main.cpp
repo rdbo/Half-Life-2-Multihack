@@ -27,14 +27,12 @@ void InitImGui(LPDIRECT3DDEVICE9 device)
 	style.WindowMinSize = ImVec2(IMGUI_WINDOW_W, IMGUI_WINDOW_H);
 	ImFontConfig font_cfg;
 	font_cfg.FontDataOwnedByAtlas = false;
-	roboto = io.Fonts->AddFontFromMemoryTTF(roboto_regular, sizeof(roboto_regular), FONT_SIZE, &font_cfg);
+	roboto = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\PressStart2P-Regular.ttf", 12, &font_cfg);
 	style.WindowMinSize = ImVec2(160, 20);
 	style.FramePadding = ImVec2(4, 2);
 	style.ItemSpacing = ImVec2(6, 2);
 	style.ItemInnerSpacing = ImVec2(6, 4);
 	style.Alpha = 0.95f;
-	style.WindowRounding = 4.0f;
-	style.FrameRounding = 2.0f;
 	style.IndentSpacing = 6.0f;
 	style.ItemInnerSpacing = ImVec2(2, 4);
 	style.ColumnsMinSpacing = 50.0f;
@@ -42,14 +40,14 @@ void InitImGui(LPDIRECT3DDEVICE9 device)
 	style.GrabRounding = 16.0f;
 	style.ScrollbarSize = 12.0f;
 	style.ScrollbarRounding = 16.0f;
-	style.WindowRounding = 0;
+	style.WindowRounding = 0.3f;
 	style.WindowBorderSize = 0;
 	style.TabBorderSize = 0;
 	style.TabRounding = 0;
-	style.ItemInnerSpacing.x = 0.0f;
+	style.ItemInnerSpacing.x = 1.0f;
 	style.Colors[ImGuiCol_Text] = COLOR_WHITE;
 	style.Colors[ImGuiCol_TextDisabled] = COLOR_WHITE;
-	style.Colors[ImGuiCol_WindowBg] = ImVec4(0.00f, 0.00f, 0.00f, 1.00f);
+	style.Colors[ImGuiCol_WindowBg] = ImVec4(0.2f, 0.2f, 0.2f, 1.00f);
 	style.Colors[ImGuiCol_Border] = ImVec4(0.00f, 1.00f, 1.00f, 0.65f);
 	style.Colors[ImGuiCol_BorderShadow] = ImVec4(0.00f, 0.00f, 0.00f, 0.00f);
 	style.Colors[ImGuiCol_FrameBg] = ImVec4(0.44f, 0.80f, 0.80f, 0.18f);
@@ -66,9 +64,9 @@ void InitImGui(LPDIRECT3DDEVICE9 device)
 	style.Colors[ImGuiCol_CheckMark] = ImVec4(0.00f, 1.00f, 1.00f, 0.68f);
 	style.Colors[ImGuiCol_SliderGrab] = ImVec4(0.00f, 1.00f, 1.00f, 0.36f);
 	style.Colors[ImGuiCol_SliderGrabActive] = ImVec4(0.00f, 1.00f, 1.00f, 0.76f);
-	style.Colors[ImGuiCol_Button] = ImVec4(0.00f, 0.65f, 0.65f, 0.46f);
-	style.Colors[ImGuiCol_ButtonHovered] = ImVec4(0.01f, 1.00f, 1.00f, 0.43f);
-	style.Colors[ImGuiCol_ButtonActive] = ImVec4(0.00f, 1.00f, 1.00f, 0.62f);
+	style.Colors[ImGuiCol_Button] = ImVec4(56, 81, 112, 255);
+	style.Colors[ImGuiCol_ButtonHovered] = ImVec4(56, 81, 112, 255);
+	style.Colors[ImGuiCol_ButtonActive] = ImVec4(56, 81, 112, 255);
 	style.Colors[ImGuiCol_Header] = ImVec4(0.00f, 1.00f, 1.00f, 0.33f);
 	style.Colors[ImGuiCol_HeaderHovered] = ImVec4(0.00f, 1.00f, 1.00f, 0.42f);
 	style.Colors[ImGuiCol_HeaderActive] = ImVec4(0.00f, 1.00f, 1.00f, 0.54f);
@@ -81,6 +79,9 @@ void InitImGui(LPDIRECT3DDEVICE9 device)
 	style.Colors[ImGuiCol_PlotHistogramHovered] = ImVec4(0.00f, 1.00f, 1.00f, 1.00f);
 	style.Colors[ImGuiCol_TextSelectedBg] = ImVec4(0.00f, 1.00f, 1.00f, 0.22f);
 	style.Colors[ImGuiCol_ModalWindowDarkening] = ImVec4(0.04f, 0.10f, 0.09f, 0.51f);
+	style.Colors[ImGuiCol_Tab] = ImVec4(0.16f, 0.37f, 0.31f, 1.00f);
+	style.Colors[ImGuiCol_TabActive] = ImVec4(0.43f, 0.69f, 0.58f, 1.00f);
+	style.Colors[ImGuiCol_TabHovered] = ImVec4(0.43f, 0.69f, 0.58f, 1.00f);
 	
 	ImGui_ImplWin32_Init(window);
 	ImGui_ImplDX9_Init(device);
