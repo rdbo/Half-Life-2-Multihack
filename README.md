@@ -1,26 +1,52 @@
-# Half-Life-2-Multihack
-Multihack for Half-Life: 2 (singleplayer)
-![alt text](https://github.com/rdbo/Half-Life-2-Multihack/blob/master/hl2_mh1.PNG)
-![alt text](https://github.com/rdbo/Half-Life-2-Multihack/blob/master/hl2_mh2.PNG)
-<h2>Features</h2>
-<p>Infinite Health</p>
-<p>Infinite Armor</p>
-<p>Infinite Aux Power</p>
-<p>Infinite Ammo</p>
-<p>Custom Crosshair</p>
-<p>One-Hit Kills</p>
-<p>Triggerbot</p>
-<p>Break MaxSpeed</p>
-<p>Instant Duck</p>
-<p>No ViewPunch</p>
-<p>Wireframe</p>
-<p>Console Logs</p>
-<br/>
-<h1>Setting up the solution</h1>
-<ul>
-  <li>Download and install <a href="https://www.microsoft.com/en-us/download/details.aspx?id=6812">DirectX SDK</a></li>
-  <li>Open the solution on Visual Studio and open the project Properties</li>
-  <li>Go to VC++ Directories -> Include Directories. Click on 'Edit' and select the Include folder <br/>located on your DirectX SDK installation path. It is generally this one: <br/><i>%programfiles(x86)%\Microsoft DirectX SDK (June 2010)\Include\</i> or <i>%DXSDK_DIR%\Include\</i>
-  <li>Now go to VC++ Directories -> Library Directories. Click on 'Edit' and select the library folder <br/> located on your DirectX SDK installation path. It is generally this one - choose x86 for 32bit and x64 for 64bit: <br/><i>%programfiles(x86)%\Microsoft DirectX SDK (June 2010)\Lib\</i> or <i>%DXSDK_DIR%\Lib\</i></li>
-  <li><b>Done!</b></li>
-</ul>
+<h1> HL2Ware.net - Half-Life 2 Cheat </h1>
+HL2Ware.net is updated fork of <a href="https://github.com/rdbo/Half-Life-2-Multihack">rdbo/Half-Life-2-Multihack</a>
+
+
+<h3>Menu screenshot (probably will change soon): </h3>
+
+![image](https://user-images.githubusercontent.com/65111609/204043806-1d03f2cf-4f2f-45d9-a50a-80d5af7cf345.png)
+
+
+<h2>Functions</h2>
+
+```
+Inf HP
+Inf Armor
+Inf Aux Power
+Inf Ammo
+Auto BunnyHop
+Onetap kills
+TriggerBot
+Break MaxSpeed
+Instant Duck
+No View Punch
+Wireframe (Wallhack)
+Console Logs
+```
+
+<h2>How to use</h2>
+
+```
+U will need: Visual Studio (2019 or 2022 recommended), DirectX SDK, Half-life 2(Optional but you must somehow test this), Injector(i recommend Process hacker for injecting)
+
+1. Open .sln file
+2. Add DX SDK to VC++ Directories
+3. go to build settings and change Debug to Release, make sure that you are building to x86 platform not x64
+4. Compile.
+5. open Half-Life 2
+6. Inject HL2ware.net-master\Release\HalfLife2_Multihack.dll to hl2.exe
+7. Done! 
+```
+
+
+<h1>How to install DirectX sdk</h1>
+
+```
+Download and install https://www.microsoft.com/en-us/download/details.aspx?id=6812
+Open the solution on Visual Studio and open the project Properties
+Go to VC++ Directories -> Include Directories. Click on 'Edit' and select the Include folder located on your DirectX SDK installation path. 
+It is generally this one: <br/><i>%programfiles(x86)%\Microsoft DirectX SDK (June 2010)\Include\</i> or <i>%DXSDK_DIR%\Include\
+Now go to VC++ Directories -> Library Directories. Click on 'Edit' and select the library folder located on your DirectX SDK installation path. 
+It is generally this one - choose x86 for 32bit and x64 for 64bit: <br/><i>%programfiles(x86)%\Microsoft DirectX SDK (June 2010)\Lib\</i> or <i>%DXSDK_DIR%\Lib\
+Done!
+```
