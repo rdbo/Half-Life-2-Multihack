@@ -103,8 +103,7 @@ void HL2::DrawMenu()
 			InfiniteAmmo();
 		ImGui::Spacing();
 		ImGui::Spacing();
-		if (ImGui::Checkbox("Auto BunnyHop", &autobh))
-			bunnyhop();
+		ImGui::Checkbox("Auto BunnyHop", &autobh);
 		ImGui::Spacing();
 		ImGui::Spacing();
 		ImGui::Checkbox("One-Hit Kills", &hitkill);
