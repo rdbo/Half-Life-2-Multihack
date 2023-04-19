@@ -44,8 +44,9 @@ bool brk_speed = false;
 bool no_ducktime = false;
 bool no_punch = false;
 bool wireframe = false;
-bool conlog = true;
+bool conlog = false;
 bool xhair = false;
+bool autobh = false;
 
 //Hooks
 UINT pKeyHook[0xFE];
@@ -67,6 +68,8 @@ void CheckCrosshair();
 void CheckWireframe();
 void CheckSpeed();
 void ForceAttack();
+void ForceJump();
+void bunnyhop();
 void InfiniteAmmo();
 PTR DecHealthAddr;
 PTR DecHealthJumpAddr;
@@ -78,32 +81,75 @@ void NoViewPunch();
 
 void HL2::DrawMenu()
 {
-	ImGui::Begin("Half-Life: 2 - Multihack by rdbo");
+	ImGui::SetNextWindowSize({ 750.0f, 625.0f });
+	ImGui::Begin("Half-Life: 2 Cheat by rdbo & Zordon1337", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
+	ImGui::Text("HL2Ware.net by rdbo & Zordon1337");
+	ImGui::Spacing();
+	ImGui::Spacing();
 	ImGui::BeginTabBar("navbar");
-	if (ImGui::BeginTabItem("Cheats"))
+	if (ImGui::BeginTabItem("Combat"))
 	{
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Checkbox("Triggerbot", &triggerbot);
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Spacing();
 		ImGui::Checkbox("Infinite Health", &inf_health);
+		ImGui::Spacing();
+		ImGui::Spacing();
 		ImGui::Checkbox("Infinite Armor", &inf_armor);
+		ImGui::Spacing();
+		ImGui::Spacing();
 		ImGui::Checkbox("Infinite Aux Power", &inf_aux);
+		ImGui::Spacing();
+		ImGui::Spacing();
 		if (ImGui::Checkbox("Infinite Ammo", &inf_ammo))
 			InfiniteAmmo();
+		ImGui::Spacing();
+		ImGui::Spacing();
 		ImGui::Checkbox("One-Hit Kills", &hitkill);
-		ImGui::Checkbox("Triggerbot", &triggerbot);
-		ImGui::Checkbox("Break MaxSpeed", &brk_speed);
-		ImGui::Checkbox("Instant Duck", &no_ducktime);
+		ImGui::EndTabItem();
+	}	
+	ImGui::Spacing();
+	ImGui::Spacing();
+	if (ImGui::BeginTabItem("Visuals"))
+	{
+		ImGui::Spacing();
+		ImGui::Spacing();
 		if (ImGui::Checkbox("No View Punch", &no_punch))
 			NoViewPunch();
+		ImGui::Spacing();
+		ImGui::Spacing();
 		ImGui::Checkbox("Wireframe", &wireframe);
-		ImGui::Checkbox("Console Logs", &conlog);
 		ImGui::EndTabItem();
 	}
-
-	if (ImGui::BeginTabItem("Custom Crosshair"))
+	ImGui::Spacing();
+	ImGui::Spacing();
+	if (ImGui::BeginTabItem("Misc"))
 	{
-		ImGui::Checkbox("Enable", &xhair);
-		ImGui::SliderInt("Crosshair Width", &crosshair.size.x, 1, SCREEN_WIDTH - 1);
-		ImGui::SliderInt("Crosshair Height", &crosshair.size.y, 1, SCREEN_HEIGHT - 1);
-		ImGui::ColorPicker3("Crosshair Color", crosshair.color);
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Checkbox("Auto BunnyHop", &autobh);
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Checkbox("Console Logs", &conlog);
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Checkbox("Instant Duck", &no_ducktime);
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Checkbox("Break MaxSpeed", &brk_speed);
+		ImGui::Spacing();
+		ImGui::Spacing();
+		ImGui::Checkbox("Custom Crosshair", &xhair);
+		if (xhair)
+		{
+			ImGui::SliderInt("Crosshair Width", &crosshair.size.x, 1, SCREEN_WIDTH - 1);
+			ImGui::SliderInt("Crosshair Height", &crosshair.size.y, 1, SCREEN_HEIGHT - 1);
+			ImGui::ColorPicker3("Crosshair Color", crosshair.color);
+		}
+			
 		ImGui::EndTabItem();
 	}
 	ImGui::EndTabBar();
@@ -149,7 +195,7 @@ DWORD WINAPI HL2::Hack(LPVOID lpReserved)
 		{
 			Hook();
 			hl2_init = true;
-			ConsoleLog((char*)"Hooks initialized");
+			ConsoleLog((char*)"Injected HL2Ware.net! have fun!");
 		}
 	}
 	while (init_hook)
@@ -177,6 +223,7 @@ DWORD WINAPI HL2::Hack(LPVOID lpReserved)
 				CheckCrosshair();
 				CheckWireframe();
 				CheckSpeed();
+				bunnyhop();
 			}
 		}
 	}
@@ -194,6 +241,20 @@ void CheckHealth()
 	}
 }
 
+
+void bunnyhop()
+{
+	if (autobh)
+	{
+		if (GetAsyncKeyState(VK_SPACE))
+		{
+			if (!localPlayer->isOnAir)
+			{
+				*(DWORD*)(client + HL2::Offsets::dwForceJump) = 6;
+			}
+		}
+	}
+}
 void CheckArmor()
 {
 	if (inf_armor && localPlayer->Armor < ArmorValue)
@@ -219,9 +280,6 @@ void CheckTriggerbot()
 {
 	if (triggerbot && localPlayer->OnTarget == true)
 	{
-		char buff[50];
-		snprintf(buff, sizeof(buff), "Aim On Target");
-		ConsoleLog(buff, cBlue);
 		ForceAttack();
 	}
 }
@@ -359,6 +417,10 @@ void ConsoleLog(char* text, Color* color)
 void ForceAttack()
 {
 	*(DWORD*)(client + HL2::Offsets::dwForceAttack) = 6;
+}
+void ForceJump()
+{
+	*(DWORD*)(client + HL2::Offsets::dwForceJump) = 6;
 }
 
 void NoViewPunch()
