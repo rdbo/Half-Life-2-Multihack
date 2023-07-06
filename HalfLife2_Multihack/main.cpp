@@ -91,7 +91,7 @@ LRESULT __stdcall PHook::WndProc(const HWND hWnd, UINT uMsg, WPARAM wParam, LPAR
 
 	if (uMsg == WM_KEYDOWN)
 	{
-		if (wParam == KEY_MENU)
+		if (wParam == VK_INSERT)
 		{
 			showMenu = !showMenu;
 		}
